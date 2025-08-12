@@ -6,8 +6,6 @@ public class SfxSlider : MonoBehaviour
 {
     [SerializeField] private VolumeFader _volumeFader;
     [SerializeField] private string _audioMixerGroupName;
-    
-    private readonly float MinSliderValue = 0.0001f;
 
     private Slider _slider;
 
@@ -38,13 +36,6 @@ public class SfxSlider : MonoBehaviour
         const float MaxSliderValue = 1.0f;
         float savedSliderValue = PlayerPrefs.GetFloat(_audioMixerGroupName, MaxSliderValue);
 
-        if (Mathf.Approximately(savedSliderValue, 0.0f))
-        {
-            _volumeFader.ChangeVolume(_audioMixerGroupName, MinSliderValue);
-        }
-        else
-        {
-            _volumeFader.ChangeVolume(_audioMixerGroupName, savedSliderValue);
-        }
+        _volumeFader.ChangeVolume(_audioMixerGroupName, savedSliderValue);
     }
 }

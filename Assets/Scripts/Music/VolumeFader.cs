@@ -6,6 +6,7 @@ public class VolumeFader : MonoBehaviour
     [SerializeField] private AudioMixer _audioMixer;
 
     private readonly int _volumeModifier = 20;
+    private readonly float _minMixerVolume = -80.0f;
     
     public void ToggleMute()
     {
@@ -14,6 +15,14 @@ public class VolumeFader : MonoBehaviour
 
     public void ChangeVolume(string audioMixerGroupName, float volume)
     {
-        _audioMixer.SetFloat(audioMixerGroupName, Mathf.Log10(volume) * _volumeModifier);
+        if (volume == 0)
+        {
+            _audioMixer.SetFloat(audioMixerGroupName, _minMixerVolume);
+        }
+        else
+        {
+            _audioMixer.SetFloat(audioMixerGroupName, Mathf.Log10(volume) * _volumeModifier);
+        }
+        
     }
 }
