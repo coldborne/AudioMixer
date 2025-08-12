@@ -7,7 +7,7 @@ public class VolumeFader : MonoBehaviour
 
     private readonly int _volumeModifier = 20;
     private readonly float _minMixerVolume = -80.0f;
-    
+
     public void ToggleMute()
     {
         AudioListener.pause = !AudioListener.pause;
@@ -23,6 +23,5 @@ public class VolumeFader : MonoBehaviour
         {
             _audioMixer.SetFloat(audioMixerGroupName, Mathf.Log10(volume) * _volumeModifier);
         }
-        
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SfxButton : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
-    
+
     private Button _button;
 
     private void Awake()
@@ -23,7 +23,7 @@ public class SfxButton : MonoBehaviour
         _button.onClick.RemoveListener(PlayClip);
     }
 
-    public void PlayClip()
+    private void PlayClip()
     {
         _audioSource.Play();
     }
